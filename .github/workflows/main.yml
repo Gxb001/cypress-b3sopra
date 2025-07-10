@@ -1,34 +1,12 @@
-name: Cypress Tests
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
+name: End-to-end tests
+on: push
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-24.04
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run Cypress Tests
-        uses: cypress-io/github-action@v6.5.0
-        with:
-          browser: chrome           # ou 'electron' (défaut) ou 'firefox'
-          start: npm start          # commande pour démarrer ton app si nécessaire
-          wait-on: 'http://localhost:3000'  # modifie selon ton port
-          wait-on-timeout: 120      # temps max en secondes pour attendre le serveur
-          record: false             # ou true si tu veux enregistrer sur Cypress Cloud
+      # Install npm dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
