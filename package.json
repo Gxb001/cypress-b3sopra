@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Gxb001/cypress-b3sopra/issues"
   },
-  "homepage": "https://github.com/Gxb001/cypress-b3sopra#readme"
+  "homepage": "https://github.com/Gxb001/cypress-b3sopra#readme",
+  "dependencies": {
+    "cypress": "^14.5.1"
+  }
 }
